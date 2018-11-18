@@ -3,12 +3,14 @@ Title: Precipitate Calculator
 Name: Harleen Bajwa
 Date: 11/07/18
 '''
+### Imports ###
 import sys
+
 ### variables ###
 
 poscharge = 0
 negcharge = 0
-
+## should i delete all these def muli - def div
 def muli(a, b):
     c = a * b
     return c
@@ -61,7 +63,7 @@ neg = neg.lower()
 print(neg)
 compound = pos + neg
 print(compound)
-
+## array 2d
 gr1 = [
     ["lif", 1, 1], ["mgf", 1, 2], ["caf", 1, 2], ["srf", 1, 2], ["baf", 1, 2], ["fef", 1, 2], ["hgf", ], ["pbf", 1, 2]]
 gr2 = [
@@ -117,12 +119,12 @@ else:
 
 print(poscharge)
 print(negcharge)
-
+## balancing the equation 
 if poscharge == negcharge:
   if poscharge == 1:
-    print(str(poscharge),str(pos) + " + " + str(negcharge), str(neg)+ " ---> " + str(compound))
+    print(str(poscharge),str(pos) + " + " + str(negcharge), str(neg)+ " ---> " + str(compound)) 
     neg = negcharge + neg 
     compound = compound + pos
-  elif poscharge == 0:
+  elif poscharge == 0: ## how do u exit the program 
     pass
 #elif not poscharge == negcharge:
