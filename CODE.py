@@ -3,48 +3,28 @@ Title: Precipitate Calculator
 Name: Harleen Bajwa
 Date: 11/07/18
 '''
-### Imports ###
-import sys
 
 ### variables ###
 
 poscharge = 0
 negcharge = 0
-## should i delete all these def muli - def div
-def muli(a, b):
-    c = a * b
-    return c
-
-def add(a, b):
-    c = a + b
-    return c
-
-def sub(a, b):
-    c = a - b
-    return c
-
-def div(a, b):
-    c = a / b
-    return c
-
+prefix1 = ""
+prefix2 = ""
 
 def pos_ion():
     try:
         pvol = float(input("What is the volume of the positive solution. (L)"))
         pcon = float(input("What is the concentration of positive solution. (mol/L)"))
-        npos = muli(pvol, pcon)
-        print(npos)
-        return npos
+        return pvol * pcon
     except ValueError:
         print("Please enter a number.")
         return pos_ion()
+
 def neg_ion():
     try:
         nvol = float(input("What is the volume of the negative solution. (L)"))
         ncon = float(input("What is the concentration of positive solution. (mol/L)"))
-        nneg = muli(nvol, ncon)
-        print(nneg)
-        return nneg
+        return nvol * ncon
     except ValueError:
         print("Please enter a number.")
         return neg_ion()
@@ -57,74 +37,45 @@ def ion():
    return pos, neg
 
 pos, neg = ion()
-pos = pos.lower()
-print(pos)
-neg = neg.lower()
-print(neg)
 compound = pos + neg
-print(compound)
+
 ## array 2d
 gr1 = [
-    ["lif", 1, 1], ["mgf", 1, 2], ["caf", 1, 2], ["srf", 1, 2], ["baf", 1, 2], ["fef", 1, 2], ["hgf", ], ["pbf", 1, 2]]
+    ["LiF", 1, 1], ["MgF", 1, 2], ["CaF", 1, 2], ["SrF", 1, 2], ["BaF", 1, 2], ["FeF", 1, 2], ["HgF", ], ["PbF", 1, 2]
+]
 gr2 = [
-    ["cucl", 1, 1] , ["agcl", 1, 1], ["hgcl", 1, 2], ["pbcl", 1, 2], ["tlcl", 1, 1], ["cubr", 1, 1], ["agbr", 1, 1], ["hgbr", 1, 2], ["pbbr", 1, 2], ["tlbr", 1, 1], ["cui", 1, 1] , ["agi", 1, 1], ["hgi", 1, 2], ["pbi", 1, 2], ["tli", 1, 1]
-    ]
+    ["CuCl", 1, 1], ["AgCl", 1, 1], ["HgCl", 1, 2], ["PbCl", 1, 2], ["TlCl", 1, 1], ["CuBr", 1, 1], ["AgBr", 1, 1],
+    ["HgBr", 1, 2], ["PbBr", 1, 2], ["TlBr", 1, 1], ["CuI", 1, 1], ["AgI", 1, 1], ["HgI", 1, 2], ["PbI", 1, 2], ["TlI", 1, 1]
+]
 gr3 = [
-    ["caso4",1 , 1], ["srso4",1 , 1], ["baso4", 1, 1], ["agso4", 2, 1], ["hg2so4", 1, 1], ["pbso4", 1, 1], ["raso4", 1, 1]
-    ]
+    ["CaSO4", 1, 1], ["SrSO4", 1, 1], ["BaSO4", 1, 1], ["AgSO4", 2, 1], ["Hg2SO4", 1, 1], ["PbSO4", 1, 1], ["RaSO4", 1, 1]
+]
 
-match = False 
-if neg == "f":
-  for i in range (len(gr1)):
-    if compound == gr1[i][0]:
-      poscharge = gr1[i][1] + poscharge
-      negcharge = gr1[i][2] + negcharge
-      match = True
-  if match == False:
-    print("3This solution does not produce a precipitate.")
-elif neg =="cl":
-  for i in range (len(gr2)):
-    if compound == gr2[i][0]:
-      poscharge = gr2[i][1] + poscharge 
-      negcharge = gr2[i][2] + negcharge
-      match = True
-  if match == False:
-      print("2This solution does not produce a precipitate.")
-elif neg == "br":
-  for i in range (len(gr2)):
-    if compound == gr2[i][0]:
-      poscharge = gr2[i][1] + poscharge 
-      negcharge = gr2[i][2] + negcharge
-      match = True
-  if match == False:
-      print("4This solution does not produce a precipitate.")
-elif neg == "i":
-  for i in range (len(gr2)):
-    if compound == gr2[i][0]:
-      poscharge = gr2[i][1] + poscharge 
-      negcharge = gr2[i][2] + negcharge
-      match = True
-  if match == False:
-      print("5This solution does not produce a precipitate.")
-elif neg == "so4":
-  for i in range (len(gr3)):
-    if compound == gr3[i][0]:
-      poscharge = gr3[i][1] + poscharge
-      negcharge = gr3[i][2] + negcharge
-      match = True
-  if match == False:
-    print("1This solution does not produce a precipitate.")
-else:
-  print("This solution does not produce a precipitate.")
+if neg == "F":
+  gr = gr1
+elif neg == "Cl" or neg == "Br" or neg == "I":
+  gr = gr2
+elif neg == "SO4":
+  gr = gr3
 
-print(poscharge)
-print(negcharge)
-## balancing the equation 
-if poscharge == negcharge:
-  if poscharge == 1:
-    print(str(poscharge),str(pos) + " + " + str(negcharge), str(neg)+ " ---> " + str(compound)) 
-    neg = negcharge + neg 
-    compound = compound + pos
-  elif poscharge == 0: ## how do u exit the program 
-    pass
-#elif not poscharge == negcharge:
+try:
+    for i in range(len(gr)):
+        if compound == gr[i][0]:
+            poscharge = gr[i][1] + poscharge
+            negcharge = gr[i][2] + negcharge
+
+    ## balancing the equation
+    if poscharge == negcharge:
+        pass
+    elif (poscharge % negcharge == 0) or (negcharge % poscharge == 0):
+        if poscharge > negcharge:
+            prefix1 = str(int(poscharge / negcharge))
+        else:
+            prefix2 = str(int(negcharge / poscharge))
+    else:
+        prefix1 = str(negcharge)
+        prefix2 = str(poscharge)
+    print(prefix1 + pos + " + " + prefix2 + neg + " ---> " + compound)
+
+except NameError:
+    print("This solution does not produce a precipitate.")
