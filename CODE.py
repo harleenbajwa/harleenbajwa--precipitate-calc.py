@@ -72,25 +72,16 @@ elif pos in cation3:
     print("Elements are not recognized.")
 else:
   print("Elements are not recognized.")
-
+balancing = []
 for i in range(len(gr)):
     if compound == gr[i][0]:
+        balancing.append(gr[i][0].pop()) ## how would i do this
         posamount = gr[i][1] + posamount
         negamount = gr[i][2] + negamount
+      
 
-balancing = []
-balancing.append(pos)
-balancing.append(neg)
-balancing.append(pos)
-balancing.append(posamount)
-balancing.append(neg)
-balancing.append(negamount)
-print(balancing)
-if posamount == negamount in balancing:
-  pass
-elif posamount > negamount:
-  pass##SORRY STILL DOING THIS
 
+"""
 try:
     for i in range(len(gr)):
         if compound == gr[i][0]:
@@ -112,3 +103,4 @@ try:
 
 except NameError:
     print("This solution does not produce a precipitate.")
+"""
