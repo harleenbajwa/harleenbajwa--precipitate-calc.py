@@ -36,9 +36,9 @@ def ion():
    neg_ion()
    return pos, neg
 
-# elements is a tuple
-elements = ion()
-compound = elements[0] + elements[1]
+pos, neg = ion()
+compound = pos + neg
+print(compound)
 
 ## array 2d
 gr1 = [
@@ -51,32 +51,22 @@ gr2 = [
 gr3 = [
     ["CaSO4", 1, 1], ["SrSO4", 1, 1], ["BaSO4", 1, 1], ["AgSO4", 2, 1], ["Hg2SO4", 1, 1], ["PbSO4", 1, 1], ["RaSO4", 1, 1]
 ]
+cation1 = ["Li", "Mg", "Ca", "Sr", "Ba", "Fe", "Hg2", "Pb"]
+cation2 = ["Cu", "Ag", "Hg2", "Pb", "Tl"]
+cation3 = ["Ca", "Sr", "Ba", "Ag", "Hg2", "Pb", "Ra"]
 
-if elements[1] == "F":
-  gr = gr1
-elif elements[1] == "Cl" or neg == "Br" or neg == "I":
-  gr = gr2
-elif elements[1] == "SO4":
-  gr = gr3
+if pos in cation1:
+  if neg == "F":
+    gr = gr1
+elif pos in cation2:
+  if neg == "Cl" or neg == "Br" or neg == "I":
+    gr = gr2
+elif pos in cation3:
+  if neg == "SO4":
+    gr = gr3
 
-try:
-    for i in range(len(gr)):
-        if compound == gr[i][0]:
-            poscharge = gr[i][1] + poscharge
-            negcharge = gr[i][2] + negcharge
 
-    ## balancing the equation
-    if poscharge == negcharge:
-        pass
-    elif (poscharge % negcharge == 0) or (negcharge % poscharge == 0):
-        if poscharge > negcharge:
-            prefix1 = str(int(poscharge / negcharge))
-        else:
-            prefix2 = str(int(negcharge / poscharge))
-    else:
-        prefix1 = str(negcharge)
-        prefix2 = str(poscharge)
-    print(prefix1 + elements[0] + " + " + prefix2 + elements[1] + " ---> " + compound)
-
-except NameError:
-    print("This solution does not produce a precipitate.")
+for i in range(len(gr)):
+    if compound == gr[i][0]:
+        poscharge = gr[i][1] + poscharge
+        negcharge = gr[i][2] + negcharge
