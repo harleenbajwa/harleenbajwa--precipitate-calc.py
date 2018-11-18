@@ -36,8 +36,9 @@ def ion():
    neg_ion()
    return pos, neg
 
-pos, neg = ion()
-compound = pos + neg
+# elements is a tuple
+elements = ion()
+compound = elements[0] + elements[1]
 
 ## array 2d
 gr1 = [
@@ -51,11 +52,11 @@ gr3 = [
     ["CaSO4", 1, 1], ["SrSO4", 1, 1], ["BaSO4", 1, 1], ["AgSO4", 2, 1], ["Hg2SO4", 1, 1], ["PbSO4", 1, 1], ["RaSO4", 1, 1]
 ]
 
-if neg == "F":
+if elements[1] == "F":
   gr = gr1
-elif neg == "Cl" or neg == "Br" or neg == "I":
+elif elements[1] == "Cl" or neg == "Br" or neg == "I":
   gr = gr2
-elif neg == "SO4":
+elif elements[1] == "SO4":
   gr = gr3
 
 try:
@@ -75,7 +76,7 @@ try:
     else:
         prefix1 = str(negcharge)
         prefix2 = str(poscharge)
-    print(prefix1 + pos + " + " + prefix2 + neg + " ---> " + compound)
+    print(prefix1 + elements[0] + " + " + prefix2 + elements[1] + " ---> " + compound)
 
 except NameError:
     print("This solution does not produce a precipitate.")
