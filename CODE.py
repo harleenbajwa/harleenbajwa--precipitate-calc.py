@@ -6,8 +6,8 @@ Date: 11/07/18
 
 ### variables ###
 
-poscharge = 0
-negcharge = 0
+posamount = 0
+negamount = 0
 prefix1 = ""
 prefix2 = ""
 
@@ -75,5 +75,31 @@ else:
 
 for i in range(len(gr)):
     if compound == gr[i][0]:
-        poscharge = gr[i][1] + poscharge
-        negcharge = gr[i][2] + negcharge
+        posamount = gr[i][1] + posamount
+        negamount = gr[i][2] + negamount
+
+balancing = []
+balancing.append(pos)
+balancing.append(neg)
+balancing.append(pos)
+balancing.append(posamount)
+balancing.append(neg)
+balancing.append(negamount)
+print(balancing)
+
+'''
+try:
+    for i in range(len(gr)):
+        if compound == gr[i][0]:
+            poscharge = gr[i][1] + poscharge
+            negcharge = gr[i][2] + negcharge
+
+    ## balancing the equation
+    if negcharge == poscharge:
+      pass
+    elif negcharge> poscharge:
+
+
+except NameError:
+    print("This solution does not produce a precipitate.")
+'''
