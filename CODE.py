@@ -58,13 +58,20 @@ cation3 = ["Ca", "Sr", "Ba", "Ag", "Hg2", "Pb", "Ra"]
 if pos in cation1:
   if neg == "F":
     gr = gr1
+  else:
+    print("Elements are not recognized.")
 elif pos in cation2:
   if neg == "Cl" or neg == "Br" or neg == "I":
     gr = gr2
+  else:
+    print("Elements are not recognized.")
 elif pos in cation3:
   if neg == "SO4":
     gr = gr3
-
+  else:
+    print("Elements are not recognized.")
+else:
+  print("Elements are not recognized.")
 
 for i in range(len(gr)):
     if compound == gr[i][0]:
