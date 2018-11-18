@@ -86,8 +86,11 @@ balancing.append(posamount)
 balancing.append(neg)
 balancing.append(negamount)
 print(balancing)
+if posamount == negamount in balancing:
+  pass
+elif posamount > negamount:
+  pass##SORRY STILL DOING THIS
 
-'''
 try:
     for i in range(len(gr)):
         if compound == gr[i][0]:
@@ -95,11 +98,17 @@ try:
             negcharge = gr[i][2] + negcharge
 
     ## balancing the equation
-    if negcharge == poscharge:
-      pass
-    elif negcharge> poscharge:
-
+    if poscharge == negcharge:
+        pass
+    elif (poscharge % negcharge == 0) or (negcharge % poscharge == 0):
+        if poscharge > negcharge:
+            prefix1 = str(int(poscharge / negcharge))
+        else:
+            prefix2 = str(int(negcharge / poscharge))
+    else:
+        prefix1 = str(negcharge)
+        prefix2 = str(poscharge)
+    print(prefix1 + pos + " + " + prefix2 + neg + " ---> " + compound)
 
 except NameError:
     print("This solution does not produce a precipitate.")
-'''
