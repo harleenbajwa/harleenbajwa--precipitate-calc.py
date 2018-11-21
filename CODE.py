@@ -8,8 +8,8 @@ Date: 11/07/18
 
 posamount = 0
 negamount = 0
-prefix1 = ""
-prefix2 = ""
+suffix1 = ""
+suffix2 = ""
 
 def pos_ion():
     try:
@@ -55,23 +55,14 @@ cation1 = ["Li", "Mg", "Ca", "Sr", "Ba", "Fe", "Hg2", "Pb"]
 cation2 = ["Cu", "Ag", "Hg2", "Pb", "Tl"]
 cation3 = ["Ca", "Sr", "Ba", "Ag", "Hg2", "Pb", "Ra"]
 
-if pos in cation1:
-  if neg == "F":
+if pos in cation1 and neg == "F":
     gr = gr1
-  else:
-    print("Element(s) are not recognized.")
-elif pos in cation2:
-  if neg == "Cl" or neg == "Br" or neg == "I":
+elif pos in cation2 and neg == "Cl" or neg == "Br" or neg == "I":
     gr = gr2
-  else:
-    print("Element(s) are not recognized.")
-elif pos in cation3:
-  if neg == "SO4":
+elif pos in cation3 and neg == "SO4":
     gr = gr3
-  else:
-    print("Element(s) are not recognized.")
 else:
-  print("Element(s) are not recognized.")
+    print("Element(s) are not recognized.")
 
 
 try:
@@ -85,15 +76,13 @@ try:
         pass
     elif (posamount % negamount == 0) or (negamount % posamount == 0):
         if posamount > negamount:
-            prefix1 = str(int(posamount / negamount))
+            suffix1 = str(int(posamount / negamount))
         else:
-            prefix2 = str(int(negamount / posamount))
+            suffix2 = str(int(negamount / posamount))
     else:
-        prefix1 = negamount
-        prefix2 = posamount
-    pos = prefix1 + pos
-    neg = prefix2 + neg
-    compound = pos + prefix1 + neg + prefix2
+        suffix1 = negamount
+        suffix2 = posamount
+    compound = pos + suffix1 + neg + suffix2
     print(compound)
 except NameError:
     print("This solution does not produce a precipitate.")
